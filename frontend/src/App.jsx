@@ -23,10 +23,19 @@ function App() {
       })
   }
 
+  const handleDeleteEmployee = (id) => {
+  fetch(`http://localhost:3001/employees/${id}`, {
+    method: 'DELETE'
+  })
+    .then(() => {
+      setEmployees(employees.filter(emp => emp.id !== id))
+    })
+}
+
   return (
     <div>
       <h1>Shift Planner</h1>
-      <EmployeeList employees={employees} />
+      <EmployeeList employees={employees} onDeleteEmployee={handleDeleteEmployee} />
       <EmployeeForm onAddEmployee={handleAddEmployee} />
     </div>
   )
