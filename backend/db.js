@@ -5,7 +5,10 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS employees (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    role TEXT
+    role TEXT,
+    email TEXT UNIQUE,
+    password_hash TEXT,
+    is_admin INTEGER NOT NULL DEFAULT 0
   )
 `);
 
